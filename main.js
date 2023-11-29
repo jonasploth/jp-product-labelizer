@@ -8,13 +8,13 @@ var SPREADSHEET_URL = "";
 // ##################################################
 
 // Auswahl des Custom Labels (0 bis 4)
-var selectedCustomLabel = 0; // Wähle zwischen 0 und 4
+var selectedCustomLabel = 2; // Wähle zwischen 0 und 4
 
 // Setzen Sie den Break-even-ROAS
-var breakevenRoas = 6.5;
+var breakevenRoas = 1.5;
 
 // Durchschnittliche Conversion Rate
-var AverageCvr = 5;
+var AverageCvr = 2;
 
 // Schwellenwert für Impressionen
 var impressionThreshold = 50;
@@ -22,8 +22,6 @@ var impressionThreshold = 50;
 // Zeitspanne für die Datenabfrage (Tage zurück)
 var daysAgo = 90;
 
-// Feed-Labels für die Filterung nach Land und Sprache
-var feedLabels = ['en', 'de', 'us']; // Füge das gewünschte Label hinzu
 
 //Bennenung der Produkttypen (So werden die Custom_Labels heissen
 var productTypeNameOverperformer = 'Machines';
@@ -137,7 +135,7 @@ function saveProductDataWithTimestamp(products) {
     
     // Fügt eine Kopfzeile hinzu, wenn das Blatt neu ist
     if (saveDataSheet.getLastRow() == 0) {
-        saveDataSheet.appendRow(['Zeitstempel', 'OfferId', 'Impressions', 'Clicks', 'Cost', 'Conversions', 'ConversionValue', 'ProductType']);
+        saveDataSheet.appendRow(['Zeitstempel', 'OfferId', 'Impressions', 'Clicks', 'Cost', 'Conversions', 'ConversionValue', 'Roas', 'ProductType']);
     }
 
     var timestamp = Utilities.formatDate(new Date(), "GMT", "yyyy-MM-dd"); // Zeitstempel im Format JJJJ-MM-TT
