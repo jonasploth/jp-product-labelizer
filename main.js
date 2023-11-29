@@ -43,7 +43,9 @@ function main() {
     });
     products = products.slice(0, 999999);
     pushToSpreadsheet(products);
+    saveProductDataWithTimestamp(products); // Speichert die Daten im save_data Sheet
 }
+
 
 function getFilteredShoppingProducts(daysAgo) {
     var today = new Date();
@@ -127,4 +129,20 @@ function setCustomLabelInSheet() {
     var sheet = spreadsheet.getSheetByName('EYL-Izer'); // Ersetzen Sie dies mit dem Namen Ihres Sheets
     var customLabelHeader = 'custom label ' + selectedCustomLabel;
     sheet.getRange('H1').setValue(customLabelHeader);
+}
+
+function saveProductDataWithTimestamp(products) {
+    var spreadsheet = SpreadsheetApp.openByUrl(SPREADSHEET_URL);
+    var saveDataSheet = spreadsheet.getSheetByName('save_data') || spreadsheet.insertSheet('save_data');
+    
+    // Fügt eine Kopfzeile hinzu, wenn das Blatt neu ist
+    if (saveDataSheet.getLastRow() == 0) {
+        saveDataSheet.appendRow(['Zeitstempel', 'OfferId', 'Impressions', 'Clicks', 'Cost', 'Conversions', 'ConversionValue', 'ProductType']);
+    }
+
+    var timestamp = Utilities.formatDate(new Date(), "GMT", "yyyy-MM-dd"); // Zeitstempel im Format JJJJ-MM-TT
+    products.forEach(function(product) {
+        var dataWithTimestamp = [timestamp].concat(product);
+        saveDataSheet.appendRow(dataWithTimestamp);
+    });
 }
