@@ -1,4 +1,9 @@
 // ##################################################
+// Kopier das Sheet und füge die neue URL unten bei Spreadsheet_URL ein
+// https://docs.google.com/spreadsheets/d/1HtfbCtEQwuXYDzh8Pt3ur9cu1inGTUQCGtsYUz0N6tA/copy
+var SPREADSHEET_URL = "";
+
+// ##################################################
 // Konfigurationsbereich
 // ##################################################
 
