@@ -125,7 +125,7 @@ function pushToSpreadsheet(data) {
 
 function setCustomLabelInSheet() {
     var spreadsheet = SpreadsheetApp.openByUrl(SPREADSHEET_URL); // Verwendet die bestehende URL des Spreadsheets
-    var sheet = spreadsheet.getSheetByName('EYL-Izer'); // Ersetzen Sie dies mit dem Namen Ihres Sheets
+    var sheet = spreadsheet.getSheetByName('EYL-Izer'); // 
     var customLabelHeader = 'custom label ' + selectedCustomLabel;
     sheet.getRange('H1').setValue(customLabelHeader);
 }
